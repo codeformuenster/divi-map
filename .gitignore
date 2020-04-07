@@ -1,0 +1,9 @@
+# data
+data/
+
+# ide
+.vscode
+
+# python
+*.egg-info
+__init__.py
