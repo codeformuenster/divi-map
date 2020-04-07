@@ -9,11 +9,13 @@ r = requests.get('https://www.intensivregister.de/api/public/intensivregister?pa
 
 # get data from JSON
 result: dict = r.json()
-assert result['rowCount'] == len(result['data'])
 data = result['data']
 
 # parse to pandas
 df = pd.json_normalize(data)
+
+# test results
+assert result['rowCount'] == len(result['data']) == len(df), "wrong number of rows"
 
 # save to CSV
 df.to_csv(Path("data/intenstivregister.csv"))
