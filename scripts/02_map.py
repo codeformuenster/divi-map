@@ -14,20 +14,18 @@ CSV = Path("data/intenstivregister.csv")
 # )
 
 hospitals = pd.read_csv(str(CSV))
-
-hospitals["bettenStatus.statusHighCare"].unique()
-hospitals = hospitals[~hospitals["bettenStatus.statusHighCare"].isnull()]
+hospitals = hospitals[~hospitals["statusHighCare"].isnull()]
 
 
 fig = px.scatter_mapbox(
     hospitals,
-    lat="krankenhausStandort.position.latitude",
-    lon="krankenhausStandort.position.longitude",
-    # hover_name="krankenhausStandort.bezeichnung",
+    lat="latitude",
+    lon="longitude",
+    hover_name="id",
     hover_data=[
-        "faelleCovidAktuell",
+        "strasse",
     ],
-    color="bettenStatus.statusHighCare",
+    color="statusHighCare",
     color_discrete_sequence=["yellow", "green", "red"],
     zoom=5,
 )
