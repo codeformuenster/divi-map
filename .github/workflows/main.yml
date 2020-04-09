@@ -5,8 +5,8 @@ on:
     branches:
       - master
 
-  # schedule: # every hour
-  #   - cron:  '*/5 * * * *'
+  schedule: # every hour, five past
+    - cron:  '5 * * * *'
 
 jobs:
   execute_scraper:
@@ -39,6 +39,6 @@ jobs:
             git commit -m "Update data (GitHub Action)"
 
       - name: Push to repo
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.5.0
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
