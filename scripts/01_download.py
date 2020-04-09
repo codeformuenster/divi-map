@@ -15,6 +15,6 @@ r = requests.get(URL)
 utc_date = datetime.utcnow()
 iso_utc = utc_date.strftime("%Y-%m-%dT%H:%M:%SZ")
 # save raw JSON to file
-filename: Path = Path(f"data/raw/icu_{iso_utc}.json")
+filename = Path(f"data/raw/icu_{iso_utc}.json")
 with open(filename, "w") as f:
     f.write(r.text)
