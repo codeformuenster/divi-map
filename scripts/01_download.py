@@ -1,9 +1,10 @@
 """ Download intensivregister. """
 
-import requests
-import pandas as pd
+from datetime import datetime
 from pathlib import Path
 
+import pandas as pd
+import requests
 from functional import seq
 
 # download JSON from API
@@ -24,4 +25,7 @@ df.columns = seq(df.columns).map(lambda column: column.split(".")[-1])
 assert result["rowCount"] == len(result["data"]) == len(df), "wrong number of rows"
 
 # SAVE TO CSV
-df.to_csv(Path("data/intenstivregister.csv"))
+utc_date = datetime.utcnow()
+iso_utc = utc_date.strftime("%Y-%m-%dT%H:%M:%SZ")
+filename: Path = Path(f"data/icu_{iso_utc}.csv")
+df.to_csv(str(filename))
