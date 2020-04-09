@@ -22,22 +22,18 @@ jobs:
           working_directory: .
           args: install
 
-      # - name: Execute scrappers
-      #   run: |
-      #       jupyter nbconvert --execute --inplace notebooks-scrappers/*.ipynb   --ExecutePreprocessor.timeout=600 --debug
+      - name: execute scrapper
+        run: |
+            python scripts/01_download.py
             
-      # - name: Execute analysers
-      #   run: |
-      #       jupyter nbconvert --execute --inplace notebooks-analysers/*.ipynb   --ExecutePreprocessor.timeout=300
-            
-      # - name: Commit files 
-      #   run: |
-      #       git config --local user.email "action@github.com"
-      #       git config --local user.name "GitHub Action"
-      #       git add data images *.ipynb
-      #       git commit -m "Update data, images and notebooks"
+      - name: commit files 
+        run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add data/raw/.
+            git commit -m "Update data (GitHub Action)"
 
-      # - name: Push to repo
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #       github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push to repo
+        uses: ad-m/github-push-action@master
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
