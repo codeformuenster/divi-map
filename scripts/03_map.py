@@ -24,11 +24,13 @@ import plotly.express as px
 # fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
 # plotly.offline.plot(fig, filename=str(Path("data/map_us.html")))
 
-
 CSV = Path("data/processed/df_clean.csv")
-hospitals = pd.read_csv(str(CSV))
-hospitals = hospitals[~hospitals["statusHighCare"].isnull()]
-hospitals = hospitals.filter(items=["id", "latitude", "longitude", "statusHighCare"])
+
+hospitals = (
+    pd.read_csv(str(CSV))
+    .dropna(subset=["statusHighCare"])  # drop rows with NA in color column
+    .filter(items=["id", "latitude", "longitude", "statusHighCare"])  # select columns
+)
 
 fig = px.scatter_mapbox(
     hospitals,
@@ -49,14 +51,10 @@ fig.update_layout(
         x=0.01,
         y=0.98,
         traceorder="normal",
-        font=dict(
-            family="sans-serif",
-            size=12,
-            color="black"
-        ),
+        font=dict(family="sans-serif", size=12, color="black"),
         bgcolor="LightSteelBlue",
         bordercolor="Black",
-        borderwidth=2
+        borderwidth=2,
     )
 )
 
