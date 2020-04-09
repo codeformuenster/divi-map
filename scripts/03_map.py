@@ -25,7 +25,7 @@ import plotly.express as px
 # plotly.offline.plot(fig, filename=str(Path("data/map_us.html")))
 
 
-CSV = Path("data/intenstivregister.csv")
+CSV = Path("data/processed/df_clean.csv")
 hospitals = pd.read_csv(str(CSV))
 hospitals = hospitals[~hospitals["statusHighCare"].isnull()]
 hospitals = hospitals.filter(items=["id", "latitude", "longitude", "statusHighCare"])
@@ -36,7 +36,7 @@ fig = px.scatter_mapbox(
     lon="longitude",
     hover_data=["id"],
     color="statusHighCare",
-    color_discrete_sequence=["yellow", "green", "red"],
+    color_discrete_sequence=["green", "yellow", "red"],
     zoom=5.2,
 )
 fig.update_layout(mapbox_style="carto-darkmatter")
