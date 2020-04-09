@@ -5,10 +5,10 @@ from pathlib import Path
 
 import requests
 
+
 # DOWNLOAD JSON
-r = requests.get(
-    "https://www.intensivregister.de/api/public/intensivregister?page=0&size=2000"
-)
+URL = "https://www.intensivregister.de/api/public/intensivregister?page=0&size=2000"
+r = requests.get(URL)
 
 # SAVE TO FILE
 # get timestamp
