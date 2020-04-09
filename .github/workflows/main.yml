@@ -5,11 +5,11 @@ on:
     branches:
       - master
 
-  schedule: # every hour
-    - cron:  '*/5 * * * *'
+  # schedule: # every hour
+  #   - cron:  '*/5 * * * *'
 
 jobs:
-  execute_notebooks:
+  execute_scraper:
     runs-on: ubuntu-latest
 
     steps:
