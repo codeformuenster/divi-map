@@ -24,6 +24,8 @@ jobs:
 
       - name: execute scraper
         run: |
+            python --version
+            which python
             python scripts/01_download.py
             
       - name: commit files 
