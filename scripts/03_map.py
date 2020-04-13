@@ -14,6 +14,7 @@ hospitals = (
     .filter(
         items=[
             "id",
+            "meldezeitpunkt",
             "bezeichnung",
             "faelleCovidAktuell",
             "latitude",
@@ -27,8 +28,16 @@ hospitals = (
     .query("longitude <= 180")  # longitude <= max value of 180 degrees
 )
 
+hospitals_latest = (
+    hospitals.sort_values(by="meldezeitpunkt")
+    .groupby("id")
+    .tail(1)
+    .reset_index()
+    .sort_values(by="id")
+)
+
 fig = px.scatter_mapbox(
-    hospitals,
+    hospitals_latest,
     lat="latitude",
     lon="longitude",
     hover_name="bezeichnung",
