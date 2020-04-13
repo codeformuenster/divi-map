@@ -63,4 +63,4 @@ fig.update_layout(
     )
 )
 
-plotly.offline.plot(fig, filename=str(Path("data/map.html")))
+plotly.offline.plot(fig, filename=str(Path("map/intensivregister.html")))
