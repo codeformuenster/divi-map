@@ -2,7 +2,7 @@
 
 Mapping free beds for COVID-19 patients in German hospitals.
 
-Data source: [intenstivregister.de](https://intenstivregister.de)
+Data source: [intensivregister.de](https://intensivregister.de)
 
 ## Hosted map
 
