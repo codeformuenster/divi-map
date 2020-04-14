@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+    <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-locale-de-latest.js"></script>
+{{ plot }}
+<!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//fathom.codeformuenster.org/tracker.js', 'fathom');
+fathom('set', 'siteId', 'FIGYO');
+fathom('trackPageview');
+</script>
+<!-- / Fathom -->
+</body>
+</html>
