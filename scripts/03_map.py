@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+import jinja2
 import pandas as pd
 import plotly
 import plotly.express as px
@@ -63,4 +64,13 @@ fig.update_layout(
     )
 )
 
-plotly.offline.plot(fig, filename=str(Path("docs/index.html")))
+fig_html = fig.to_html(
+    include_plotlyjs=False,
+    full_html=False,
+    config={"locale": "de"},
+)
+
+with open('docs/index.j2') as f:
+    t = jinja2.Template(f.read())
+with open('docs/index.html', 'w') as f:
+    f.write(t.render(plot=fig_html))
