@@ -2,7 +2,7 @@
 
 import json
 from pathlib import Path
-from typing import List
+from typing import Dict, List
 
 import pandas as pd
 from functional import seq
@@ -16,9 +16,9 @@ data_dicts: List[pd.DataFrame] = []
 for json_path in json_paths:
     # read raw json to dict
     with open(json_path) as f:
-        raw: dict = json.load(f)
+        raw: Dict = json.load(f)
     # get 'data' list
-    data: List[dict] = raw["data"]
+    data: List[Dict] = raw["data"]
     data_dicts.append(data)
 
 # JSONS TO SINGLE DATAFRAME

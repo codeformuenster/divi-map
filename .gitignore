@@ -8,3 +8,4 @@ data/*
 # python
 *.egg-info
 __init__.py
+.mypy_cache
