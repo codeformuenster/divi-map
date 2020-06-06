@@ -1,12 +1,12 @@
 name: Run scraper commit back data
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
-  schedule: # every hour, five past
-    - cron:  '5 * * * *'
+#   schedule: # every hour, five past
+#     - cron:  '5 * * * *'
 
 jobs:
   execute_scraper:
